@@ -1,15 +1,6 @@
-CSC=csc
-MONO=mono
-CSHARP_FLAGS = -debug -langversion:8
+include ../uva.mk
 
-CXX=/usr/bin/g++
-CFLAGS=-g -std=c++11
-LDFLAGS=-lm -DONLINE_JUDGE
-
-VALAC=valac
-VALA_FLAGS=-g
-
-EXE = 1-2-3.1.exe \
+DOTNET_EXE = 1-2-3.1.exe \
       uva_11799.exe \
       uva_11942.exe
 
@@ -32,7 +23,7 @@ CC_ELF = uva_11799.celf \
 VALA_ELF = uva11764.velf \
 			uva12503.velf
 
-all: $(EXE) $(CC_ELF) $(VALA_ELF)
+all: $(DOTNET_EXE) $(CC_ELF) $(VALA_ELF)
 
 csharp: $(EXE)
 
@@ -40,20 +31,10 @@ cimpl: $(CC_ELF)
 
 vala: $(VALA_ELF)
 
-%.exe: %.cs
-	$(CSC) $< $(CSHARP_FLAGS) -out:$@
-
-%.celf: %.cc
-	$(CXX) $< $(CFLAGS) $(LDFLAGS) -o $@
-
-%.velf: %.vala
-	$(VALAC) $< $(VALA_FLAGS) -o $@
-
 .PHONY: clean
 clean:
 	@echo "Cleaning"
-	-rm -f $(EXE) $(CC_ELF) $(VALA_ELF)
-	-rm -f *.mdb
-	-rm -f *.pdb
+	-rm -f $(DOTNET_EXE) $(CC_ELF) $(VALA_ELF)
+	-rm -f *.mdb *.pdb
 	-rm -f *.class
 	-rm -f a.out

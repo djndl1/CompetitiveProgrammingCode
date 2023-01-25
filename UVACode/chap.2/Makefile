@@ -1,13 +1,4 @@
-CSC=csc
-MONO=mono
-CSHARP_FLAGS=-debug -langversion:8
-
-JAVAC=javac8
-JAVA_FLAGS=-g
-
-CXX=/usr/bin/g++
-CFLAGS=-g -std=c++11
-LDFLAGS=-lm -DONLINE_JUDGE
+include ../uva.mk
 
 DOTNET_EXE = uva11222.exe \
 	  uva11988.exe \
@@ -31,15 +22,6 @@ csharp: $(DOTNET_EXE)
 cimpl: $(CC_ELF)
 
 java: $(JAVA)
-
-%.exe: %.cs
-	$(CSC) $< $(CSHARP_FLAGS) -out:$@
-
-%.celf: %.cc
-	$(CXX) $< $(CFLAGS) $(LDFLAGS) -o $@
-
-%.class: %.java
-	$(JAVAC) $(JAVA_FLAGS) $<
 
 .PHONY: clean
 clean:
