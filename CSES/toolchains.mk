@@ -2,6 +2,8 @@ CSC=csc
 MONO=mono
 CSHARP_FLAGS = -debug -langversion:8
 
+INC:=$(dir $(lastword $(MAKEFILE_LIST)))./include
+
 CXX=/usr/bin/g++
 CFLAGS=-g -std=c++11
 LDFLAGS=-lm -DONLINE_JUDGE
@@ -16,10 +18,10 @@ VALA_FLAGS=-g
 	$(CSC) $< $(CSHARP_FLAGS) -out:$@
 
 %.cpp.exe: %.cpp
-	$(CXX) $< $(CFLAGS) $(LDFLAGS) -o $@
+	$(CXX) $< $(CFLAGS) $(LDFLAGS) -o $@ -I$(INC)
 
 %.cc.exe: %.cc
-	$(CXX) $< $(CFLAGS) $(LDFLAGS) -o $@
+	$(CXX) $< $(CFLAGS) $(LDFLAGS) -o $@ -I$(INC)
 
 %.java.class: %.java
 	$(JAVAC) $(JAVA_FLAGS) $<

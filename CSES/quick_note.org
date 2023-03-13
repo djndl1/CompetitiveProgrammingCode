@@ -1,0 +1,21 @@
+* Fast C++ I/O
+
+#+begin_src cpp
+std::ios::sync_with_stdio(false); // desynchronize C and C++ stdin/stdout with this C++ I/O and C I/O cannot be mixed
+std::cin.tie(nullptr); // untie cin with cout and cerr
+#+end_src
+
+* Read all data
+
+#+begin_src cpp
+while (cin >> x) {
+    // proceed with x
+}
+#+end_src
+
+* Read File
+
+#+begin_src cpp
+freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+#+end_src

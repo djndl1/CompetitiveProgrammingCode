@@ -6,7 +6,7 @@
 
 MAKE=make
 
-SUBDIRS := introductory book_examples
+SUBDIRS := chap.2
 
 .PHONY: all $(SUBDIRS) clean
 all: $(SUBDIRS)
